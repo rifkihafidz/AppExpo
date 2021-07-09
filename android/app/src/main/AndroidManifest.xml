@@ -1,6 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.appexpo">
 
   <uses-permission android:name="android.permission.INTERNET"/>
+  <!-- Required -->
+  <uses-permission android:name="android.permission.CAMERA" />
+  <!-- Include this only if you are planning to use the microphone for video recording -->
+  <uses-permission android:name="android.permission.RECORD_AUDIO"/>
   <!-- OPTIONAL PERMISSIONS, REMOVE WHATEVER YOU DO NOT NEED -->
   <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
   <uses-permission android:name="android.permission.VIBRATE"/>
