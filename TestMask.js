@@ -1,37 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import {
-  View,
-  StyleSheet,
-  Dimensions,
-  Pressable,
-  Modal,
-  Text,
-  ActivityIndicator,
-} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Camera } from 'expo-camera';
 import { getModel, convertBase64ToTensor, startPrediction } from './tensor-helper';
 import { cropPicture } from './image-helper';
-// import * as Permissions from 'expo-permissions';
 
-const RESULT_MAPPING = ["Alpukat", "Apel", "Buah Naga", "Jeruk", "Lemon", "Nanas", "Pir", "Pisang", "Semangka", "Tomat"];
-const ratio = "16:9";
+const RESULT_MAPPING = ["Apel", "Buah Naga", "Jeruk", "Lemon", "Nanas", "Pir", "Pisang", "Semangka", "Tomat"];
 
-const App = () => {
-
-  // useEffect(() => {
-  //   async function cameraStart() {
-  //     let { status } = await Permissions.askAsync(Permissions.CAMERA, Permissions.MEDIA_LIBRARY);
-  //     setHasPermission(status === 'granted');
-  //     console.log("Permission granted.");
-  //   }
-  //   cameraStart()
-  // })
-
+const TestMask = () => {
   const cameraRef = useRef();
   const [isProcessing, setIsProcessing] = useState(false);
   const [presentedShape, setPresentedShape] = useState('');
-  const [hasPermission, setHasPermission] = useState(null);
 
   const handleImageCapture = async () => {
     setIsProcessing(true);
@@ -78,9 +57,7 @@ const App = () => {
         style={styles.camera}
         type={Camera.Constants.Type.back}
         autoFocus={true}
-        whiteBalance={Camera.Constants.WhiteBalance.auto}
-        ratio={ratio}
-      ></Camera>
+        whiteBalance={Camera.Constants.WhiteBalance.auto}></Camera>
       <Pressable
         onPress={() => handleImageCapture()}
         style={styles.captureButton}></Pressable>
@@ -88,7 +65,7 @@ const App = () => {
   )
 }
 
-export default App
+export default TestMask
 
 const styles = StyleSheet.create({
   container: {
